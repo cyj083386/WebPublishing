@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="get">
+        <p><h1>상품 주문하기</h1></p>
+        <p><h5>상품을 받을 분의 정보와 주소를 입력해 주세요!</h5></p>
+        <hr>
+
+        <p>
+            <label for="name">
+                Full Name <br>
+                <input type="text" name="name" id="firstname" placeholder="First" style="width: 100px;" autofocus>  
+                <input type="text" name="name" id="lastname" placeholder="Last" style="width: 200px;">
+            </label>
+        </p>
+        <p>
+            <label for="email">Email<br>
+                <input type="email" name="email" id="email" style="width: 315px;" placeholder="john@company.com">
+            </label>
+        </p>
+        <p>
+            <label for="phoneNumber">Phone Number<br>
+                <input type="tel" name="phoneNumber" id="phoneNumber" style="width: 315px;" placeholder="+82 000 0000 0000">
+            </label>
+        </p>
+        <p>
+            <label for="address">Shipping Address<br>
+                <select name="region" id="region">
+                    <option value="unselected" selected>거주 지역</option>
+                    <option value="seoul">서울특별시</option>
+                    <option value="gyeonggi">경기도</option>
+                    <option value="gangwon">강원도</option>
+                    <option value="jeju">제주도</option>           
+                </select>            
+                <input type="text" name="address" id="address1" style="width: 218px;" placeholder="시 / 군 / 구"><br>                
+                <input type="text" name="address" id="address2" style="width: 315px;" placeholder="상세 주소를 입력하세요."><br>                
+            </label>            
+        </p>
+        <p style="margin-bottom: 120px;">
+            주문할 상품을 선택하세요. <br>
+            <label for="packageA">
+                <input type="checkbox" name="package" id="packageA" checked>
+                A 패키지
+            </label>
+            <label for="packageB">
+                <input type="checkbox" name="package" id="packageB">
+                B 패키지
+            </label>
+            <label for="packageC">
+                <input type="checkbox" name="package" id="packageC">
+                C 패키지
+            </label>
+        </p>        
+        <p>
+            <input type="submit" value="상품 주문하기"></p>
+            <p>
+            <input type="reset" value="다음에 주문할게요.">
+        </p>
+        
+</form>
+</body>
+</html>
