@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .parent{
+      font-size: 16px;
+    }
+    .child{
+      font-size: 2em;
+    }
+    .child-to-child{ /* div 가 자식요소여야 child를 상속 */
+      font-size: 2em;
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">나는 할아버지</div>
+  <div class="child">나는 아버지
+    <div class="child-to-child">나는 나</div>
+  </div>
+</body>
+</html>
