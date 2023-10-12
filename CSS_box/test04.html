@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        /* body{
+            margin: 0px;
+            html 기본값이 margin 10px. 잘림현상 방지 safe area로 부여된값
+            height: 4000px;
+
+        } */
         .box{
             width: 100px;
             height: 100px;
@@ -12,20 +18,23 @@
         .red-box{
            
             background-color: red;
+            position: relative;
+            left: 100px;
         }
         .green-box{
             background-color: green;
-            position: relative;
-            left: 140px;
+            position: absolute;
+            left: 0;
+            top: 0;
         }
-        .blue-box{
+        /* .blue-box{
             background-color: blue;
-        }
+        } */
     </style>
 </head>
 <body>
     <div class="box red-box"></div>
     <div class="box green-box"></div>
-    <div class="box blue-box"></div>
+    <!-- <div class="box blue-box"></div> -->
 </body>
 </html>
