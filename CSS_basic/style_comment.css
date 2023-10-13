@@ -1,0 +1,83 @@
+@charset "utf-8";
+/*@charset "UTF-8"을 직독직해하면 '이 문서의 문자는 UTF-8을 사용해서 출력할 것이다'라는 뜻이다. 유니코드를 사용하는 인코딩 방식중에 하나이다.*/
+/* CSS Document */
+
+*{	margin: 0 auto;	list-style: none; font-family: "맑은 고딕";	padding: 0}
+/* Universal(*)로 아래 스타일을 모든 태그에 적용한다.
+1. margin:0 auto; 는 위아래 여백 없이 가로 중앙에 배치되는 가장 기본적인 서식.
+2. list-style: none; Unordered List <ul>이나, Ordered List <ol>의 하위에 속한 List <li>에 기호나, 숫자를 표시 되지 않게 하는 CSS 스타일
+3. 폰트는 맑은고딕
+4. padding 상하좌우 패딩값을 주지 않는다
+ */
+body,html{min-width: 1000px}
+/* 반응형 웹 브라우저 동작에 따라 body, html내 요소의 폭이 1000px 미만이 되면 1000px로 고정된다.*/
+img{max-width: 100%}
+/* 반응형 웹 브라우저 동작에 따라 img 폭이 담고있는 box의 100% 를 초과시 100%로 고정된다.*/
+.all{width: 100%; float: left}
+/*all 클래스에 body 기준 가로 100%, 왼쪽 정렬 적용*/
+.wrap{width: 1000px}
+/*wrap 클래스에 가로 1000px 적용*/
+.content{width: 1000px}
+/*content 클래스에 가로 1000px 적용*/
+a{color: inherit;text-decoration: none}
+/* color: inherit; 링크 태그 텍스트 컬러를 부모 요소와 같게 설정. a 태그 텍스트는 디폴트가 파란색이라 html 기본값인 검정으로 바꿔주는 목적이다
+text-decoration: none; a 태그 텍스트는 디폴트가 밑줄이 있어서 제거
+*/
+.clear{clear:both;position:inherit}
+/* 각 블록의 경계에 위치한 clear 클래스에서 float 속성 left, right 일괄 해제
+clear 클래스에 부모 태그의 position 속성값을 상속. 디폴트인 static을 상속*/
+header{	height: 180px}
+/* 시멘틱 태그 header의 높이를 180px로 지정 */
+#header_logo{padding-top: 20px}
+/* 아이디가 header_logo인 요소 위쪽에 패딩값 20px 지정 */
+.logo{height: 100px;overflow: hidden;float: left}
+/* 로고 클래스 높이 100px로 설정, html 요소 밖으로 넘치는 부분을 숨김, 왼쪽 정렬 */
+.logo>a>img{width: 300px}
+/*logo 클래스, a 태그 순으로 부모를 갖는 img 태그를 특정지어 300px로 너비지정 */
+nav{float: right;margin-top: 10px;padding: 10px}
+/* 시멘틱 태그 nav(네비게이션) 스타일을 오른쪽 정렬, 상단 margin 10px, 상하좌우 padding 10px로 지정 */
+.nav{width: 600px; height: 20px}
+/* nav 클래스의 폭과 높이설정 */
+.nav>li{float: left;width: 200px;text-align: center;position: relative;transition: all 0.4s;padding: 5px 0}
+/* nav 클래스를 부모로 갖는 li 요소 스타일 아래와같이 지정
+nav내에서 아이템 오른쪽 정렬, 폭 200px, 텍스트는 가운데 정렬, 
+위치는 요소를 일반적인 문서 흐름에 따라 배치, 본인위치를 기준으로함
+적용된 애니메이션(여기서는 hover)으로 변화하는데 걸리는 시간을 0.4초로 설정. color등 모든 변화요소에 대해 적용.
+패딩은 위아래 5px, 오른쪽왼쪽 0 적용*/
+.nav>li:after{clear: both}
+
+.nav>li:hover{background-color: #996699;color: #FFFFFF}
+/*네비게이션 하위 li 요소에 마우스 오버시 배경색과 텍스트 색 변경*/
+.submenu{display: none;	background-color: rgba(255,255,255,0.8);position: absolute;	z-index: 1;	width: 100%;margin-top: 5px}
+/* submenu 클래스 스타일 지정
+화면에서 보이지 않게 설정. -> nav>li에 마우스 오버시 JS로 display:block으로 변경하여 표시
+배경색은 투명도를 설정하고 위치는 웹브라우저 기준 절대위치로 설정, 
+다른 요소와 겹쳤을때 1만큼 맨앞으로 보이게 설정, 너비와 margin 상단 설정*/
+.submenu>li{padding: 5px 0 0 0;	transition: all 0.4s;color: #000}
+/*submenu 클래스 하위 li 요소 스타일 지정. 패딩은 상단만 5px, hover 변화 소요시간 0.4s, 기본색상 설정  */
+.submenu>li:hover{background-color: #CC9999;color: inherit}
+/*submenu 클래스 하위 li 요소에 마우스오버시 배경색과 텍스트색 변경. 텍스트 컬러는 상속*/
+#imgslide{height: 350px}
+/* imgslide 아이디 요소에 높이 적용 */
+.imgs{position: relative;overflow: hidden;height: 350px}
+/* imgs 클래스의 위치는 흐름에 맞는 상대적 설정, html 요소 범위를 넘으면 숨기게 설정하고 높이는 350픽셀*/
+.imgs>img{width: 100%;position: absolute;}
+/* img 클래스 하위 img 태그 넓이는 100%, 위치는 브라우저 기준으로 설정 */
+.welcome{
+    height: 40px;
+    width: 300px;
+    position: absolute; 
+    margin: -50px 0 0 0px !important;
+    text-align: center;line-height: 50px;
+    background-color: rgba(255,255,255,0.2);
+    left: 40%;
+    top: 50px}
+    /* welcome 클래스 스타일
+    요소의 높이와 너비설정, 위치는 웹브라우저 기준 절대위치
+    margin 설정을 최우선으로 적용.  top 음수 마진을 주면, 그 방향으로 요소가 이동
+    텍스트 가운데 정렬, 줄간격 50 픽셀
+    배경색 투명도있게 설정
+    웹브라우저 기준 절대위치 좌표를 기준으로 왼쪽에서 40%, 위에서 50px 이동
+    */
+.welcome h2 span{color: #CCCCCC;font-family: "Times New Roman", Times, serif}
+ /* welcome 클래스 하위 텍스트 컬러, 폰트 설정*/
