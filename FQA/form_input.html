@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <form name="" method="" action="">
+            <fieldset>
+            <legend>개발자 커뮤니티 회원가입</legend>
+            
+            <!-- input type="text" 사용  count 1-->
+            <p>
+            <label for="uid">아이디</label>
+            <input type="text" name="uid" id="uid" size="13" maxlength="14"/>
+            <button type="button">중복확인</button>
+            </p>
+            
+            <!-- input type="password" 사용  count 2-->
+            <p>
+            <label for="pwd">비밀번호</label>
+            <input type="password" name="pwd" id="pwd" />
+            <label for="pwd_2">비밀번호 확인</label>
+            <input type="password" name="pwd_2" id="pwd_2" />
+            </p>
+            
+            <!-- input type="radio" 사용  count 3-->
+            <p>
+            성별
+            <input type="radio" name="gender" id="female" value="F"/>
+            <label for="female">여성</label>
+            <input type="radio" name="gender" id="male" value="M"/>
+            <label for="male">남성</label>
+            <input type="radio" name="gender" id="soon" value="s"/>
+            <label for="soon">그 외</label>
+            <input type="radio" name="gender" id="none" value="N"/>
+            <label for="none">선택하지 않음</label>
+            </p>
+            
+            <!-- input type="tel" 사용  count 4-->
+            <!--tel은 형식을 체크하는 부분이 없습니다.단지 이 형식으로 넘어온 경우에는 전화번호라고 인식을 합니다. -->
+            <p>
+            <label for=phone>핸드폰번호</label>
+            <input type="tel" name="phone" id="phone" /> ex)01091123670
+            </p>
+            
+            
+            <p>
+            <label for="email">이메일</label>
+            <input type="text" name="email" id="email" /> @ 
+            <select>
+            <option value="">직접입력</option>
+            <option value="naver.com">네이버</option>
+            <option value="hanmail.net">다음</option>
+            <option value="gmail.com">구글</option>
+            <option value="nate.com">네이트</option>   
+            </select>
+            </p>
+            
+            <!-- input type="url" 사용  count 5-->
+            <p>
+            <label for="blog">블로그 주소</label>
+            <input type="url" name="blog" id="blog" />
+            </p>
+
+            <!-- input type="date" 사용  count 6-->
+            <p>
+            <label for="birth">생년월일</label>
+            <input type="date" name="birth" id="birth" />
+            </p>
+            
+            <!-- input type="checkbox" 사용  count 7-->
+            <p>취미
+            <input type="checkbox" name="music" id="music" /><label for="music">음악감상</label>&nbsp;&nbsp;  
+            <input type="checkbox" name="exer" id="exer" /><label for="exer">체육활동</label>&nbsp;&nbsp;
+            <input type="checkbox" name="travel" id="travel" /><label for="travel">국내·해외여행</label>&nbsp;&nbsp;
+            <input type="checkbox" name="book" id="book" /><label for="">독서</label>&nbsp;&nbsp;
+            <input type="checkbox" name="and" id="and" /><label for>기타</label>&nbsp;&nbsp;
+            </p>
+            
+            <p>
+            이용약관
+            <input type="radio" name="agree" id="disagree" /> <label for="disagree">동의하지 않습니다.</label> 
+            <input type="radio" name="agree" id="agree" /> <label for="agree">동의합니다.</label> 
+            </p>
+            
+            <p>
+            <button for="reset">초기화</button>
+            <button for="submit">
+            가입하기
+            </button>
+            </p>
+            </fieldset>
+        </form>
+
+    </body>
+</html>
+

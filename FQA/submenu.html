@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        } */
+        *{
+            padding:0;
+            margin:0;
+        }
+        ul{
+            list-style: none;
+        }
+        .topmenu {
+            padding: 0;
+            margin: 0;
+            width: 300px;
+            background-color: #5778ff;
+            text-align: center;
+        }
+        .topmenu li {
+            position: relative;
+            border-bottom: 1px solid #ddd;
+        }
+        .topmenu a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #fff;
+        }
+        .sub {display: none;
+            position: absolute;
+            top: 0;
+            left: 300px;
+            width: 200px;
+            background-color: #94a9ff;
+        }
+        .topmenu li:hover .sub {
+            display: block;
+        }
+        .sub li {
+            border-bottom: 1px solid #ccc;
+        }
+        .sub a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<ul class="topmenu">
+    <li>
+        <a href="#">MENU1</a>
+        <ul class="sub">
+            <li><a href="#">submenu01</a></li>
+            <li><a href="#">submenu02</a></li>
+            <li><a href="#">submenu03</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">MENU2</a>
+        <ul class="sub">
+            <li><a href="#">submenu01</a></li>
+            <li><a href="#">submenu02</a></li>
+            <li><a href="#">submenu03</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">MENU3</a>
+        <ul class="sub">
+            <li><a href="#">submenu01</a></li>
+            <li><a href="#">submenu02</a></li>
+            <li><a href="#">submenu03</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">MENU4</a>
+        <ul class="sub">
+            <li><a href="#">submenu01</a></li>
+            <li><a href="#">submenu02</a></li>
+            <li><a href="#">submenu03</a></li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>
