@@ -26,6 +26,7 @@ TIL 개념으로 섹션별로 나누어 업로드 하였습니다.<br>
 </details>
 
 <details><summary> FLEX </summary> 
+  
   - flex container
   - flex item
 </details>
@@ -34,15 +35,66 @@ TIL 개념으로 섹션별로 나누어 업로드 하였습니다.<br>
 </details>
 
 <details><summary> Grid </summary> 
+  
   - grid-container
   - grid-item
 </details>
 
 <details><summary> JS </summary> 
-[변수]
+  
+[변수선언과 호이스팅]
 - const
 - var
+- let
   
+[자료형]
+- 문자형
+- 숫자형
+  
+[dom을 통해 html 접근]
+- getElementById
+- getElementsByClassName
+- getElementsByTagName
+
+[이벤트처리, 팝업창 처리]
+- onclick
+- alert()
+- window.open()
+- window.close()
+
+[if, switch, loop]
+- if
+- switch
+- for
+- while
+</details>
+
+<details><summary> form </summary> 
+
+  - textarea 
+  - text
+  - password
+  - checkbox
+  - radio
+  - submit
+  - reset
+</details>
+
+<details><summary> multi </summary> 
+  
+  - autofocus
+  - video src
+  - title 옵션으로 툴팁
+  - ol, li
+</details>
+
+<details><summary> table </summary> 
+
+  - 테이블(tr, td)
+  - scope = "row", "col"
+  - rowspan, colspan
+
+</details>
 </details>
 
 
