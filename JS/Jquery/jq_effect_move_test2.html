@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script>
+      $(function () {
+        let txt1 = $('.txt1');
+        let count = 1;
+
+        $('.btnWrap button').on('click', function () {
+          let ts = $(this);
+          if (ts.hasClass('backBtn')) {
+            count--;
+            if (count < 1) {
+              count = 1;
+              return;
+            }
+            //stop앞에서 진행된 것이 정지되며 첫번째 true는 Clear 큐가 되고
+            //두번째 true은 finish 효과를 좀.
+            txt1.stop(true, true).animate({ marginLeft: '-=10%' }, 500);
+          } else { //go버튼에 해당
+            count++;
+            if (count > 10) { //10 이상을 방지함
+              count = 10;
+              return;
+            }
+            txt1.stop(true, true).animate({ marginLeft: '+=10%' }, 500);
+          }
+//        console.log(count);
+        });
+      });
+    </script>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      body{
+        padding: 20px;
+      }
+      .btnWrap{
+        margin-bottom: 10px;
+      }
+      .wrap{
+        max-width: 600px;
+        border: 1px solid #000;
+      }
+      .txt1{
+        width: 10%;
+        text-align: center;
+        background-color: aqua;
+      }
+    </style>
+    <title>JQ_Test2</title>
+  </head>
+  <body>
+    <p class="btnWrap">
+      <button class="backBtn">Back</button>
+      <button class="goBtn">Go</button>
+    </p>
+    <div class="wrap">
+      <p class="txt1">내용1</p>
+    </div>
+  </body>
+</html>

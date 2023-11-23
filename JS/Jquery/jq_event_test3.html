@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script>
+      $(function () {
+        $('.btn1 a').on('click',function () {
+            let ts = $(this);
+            $('.btn1').next().filter(':visible').hide();
+            ts.parent().next().show();
+            return false; // 링크이동마비
+        });
+      });
+    </script>
+</head>
+<body>
+    <p class="btn1"><a href="https://naver.com">이벤트 대상1</a></p>
+    <ul style="display: none">
+      <li>리스트1</li>
+      <li>리스트1</li>
+      <li>리스트1</li>
+    </ul>
+    <p class="btn1"><a href="#">이벤트 대상2</a></p>
+    <ul style="display: none">
+      <li>리스트4</li>
+      <li>리스트5</li>
+      <li>리스트6</li>
+    </ul>
+</body>
+</html>
