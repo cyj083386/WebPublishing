@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>attribute / property</title>
+    <script type="text/javascript">
+        const init = () => {
+            //console.log('page load!');
+            //노출이 안되는 경우이므로 아래 property방식이 더좋다
+            document.getElementById("btn").num = "9999";
+
+            document.getElementById("btn").onclick = function(){
+                const link = document.getElementById("link1");
+
+                console.log(this.num);
+                //실제 태그를 건드릴때, target속성은 존재하지 않으므로 null
+                console.log(link.getAttribute("target"));
+                //properties를 건드릴때, target속성은 공백값으로 존재
+                console.log(link.target);
+                // const list = document.getElementById("list");
+                // const liList = list.getElementsByTagName("a");
+                // // console.log(liList);
+
+                for (let index = 0; index < liList.length; index++) {
+                    console.log(liList[index].getAttribute("num"));
+                    document.getElementById("btn").num 
+            
+                }
+
+                // const link2 = document.getElementById("link2");
+                // //사용자 정의 attribute 가져오기
+                // console.log(link2.getAttribute("num"));
+                
+                // //여기서 href는 dom 객체의 property임을 구분해야함.
+                // link.href="http://www.google.com";
+                // link.innerText="google";
+                // link.target = "_blank";
+
+            }
+        }
+        window.onload = init;
+    </script>
+</head>
+<body>
+    <button id = "btn">click</button>
+    <hr />
+        <!--attribute에 직접num 마킹 -->
+    <ul id ="list">
+        <li><a href="http://www.naver.com" id="link1" num="1">naver</a></li>
+        <li><a href="http://www.google.com" id="link2" num="2">google</a></li>
+        <li><a href="http://www.google.com" id="link3" num="3">google</a></li>
+    </ul>
+</body>
+</html>

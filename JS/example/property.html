@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>attribute / property</title>
+    <script type="text/javascript">
+        const init = () => {
+            //console.log('page load!');
+            //노출이 안되는 경우이므로 아래 property방식이 더좋다
+            // document.getElementById("btn").num = "9999";
+
+            document.getElementById("btn").onclick = function(){
+                const link = document.getElementById("link1");
+                const liList = list.getElementsByTagName("a");
+
+
+                for (let index = 0; index < liList.length; index++) {
+                    liList[index].num = index+1;
+                    console(liList[index].num);
+                }
+
+
+            }
+        }
+        window.onload = init;
+    </script>
+</head>
+<body>
+    <button id = "btn">click</button>
+    <hr />
+        <!--attribute에 직접num 마킹 -->
+    <ul id ="list">
+        <li><a href="http://www.naver.com" id="link1" num="1">naver</a></li>
+        <li><a href="http://www.google.com" id="link2" num="2">google</a></li>
+        <li><a href="http://www.google.com" id="link3" num="3">google</a></li>
+    </ul>
+</body>
+</html>
