@@ -5,7 +5,67 @@
     <title> new document </title>
     <link href="css/style.css" type="text/css" rel="stylesheet" />
 	<script type="text/javascript">
-		
+		const init = function(){
+
+			// const mailList = document.getElementById("mailList"); //mailList.getElement~ 방식으로 form은 찾을수 없다.
+			const mailIdList = document.getElementsByName("mailId");
+
+			document.getElementById("delBtn").onclick = function(){
+				let check = false;
+				for (let index = 0; index < mailIdList.length; index++) {
+					if(mailIdList[index].checked){
+						check = true;
+						break;
+					}
+				}
+				if(check){
+					window.alert("삭제성공");
+				}else{
+					window.alert("최소 한개를 선택해 주셔야합니다.");
+				}
+			}
+
+
+			const checkAllInput = document.getElementById("checkAll");
+			// console.log(mailIdList);
+			//const checkAllInput = document.getElementById("checkAll");
+			// console.log(checkAllInput); // form 요소는 id or name 가능.
+			document.getElementById("checkAll").onclick = function(){
+				console.log(this.checked);
+				for (let index = 0; index < mailIdList.length; index++) {
+					console.log(index, mailIdList[index]);
+					mailIdList[index].checked = this.checked;
+					const mailIdTr = document.getElementById("mailId_" + mailIdList[index].value); // this -> mailIdList[index]
+					//console.log(mailIdTr);
+
+					if(this.checked){
+						mailIdTr.className = "selected";
+					} else{
+						mailIdTr.className = "";
+					}
+				
+				}
+			}
+
+			// console.log(mailIdList);
+
+			for (let index = 0; index < mailIdList.length; index++) {
+				mailIdList[index].onclick = function(){
+					console.log(this.checked, this.value);
+					const mailIdTr = document.getElementById("mailId_"+this.value);
+					if(this.checked){
+						mailIdTr.className = "selected";
+					}else{
+						mailIdTr.className = "";
+					}
+
+					checkAllInput.checked = false; 
+				}
+				
+			}
+
+	  }
+	  window.onload = init;
 	</script>
  </head>
  <body>

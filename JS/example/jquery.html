@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        const init = function(){
+            console.log($("#box"));
+            //jquery로 찾았으면 프로퍼티는 동작하지 않는다. jquery 함수로 사용해야 한다.
+            //$("#box").innerText("권진철또존다");
+            $("#box").on(
+                "click",
+                function(){
+                    //1번방법, js this.innerText = "권진철또존다";
+                    //2번방법, jquery $("#box").text("권진철또존다");
+                    //3번방법, jquery
+                    $(this).text("권진철또존다");
+                    console.log($(this).attr("id"));
+                }
+            );
+            $("#addBtn").on(
+                "click",
+                function(){
+                    // $("#myList").append("<li>a</li>");
+                    $("#myList").prepend("<li>a</li>");
+                    //js도 쓰까서 쓰기
+                    // const li = document.createElement("li");
+                    // $("#myList").prepend(li);
+                }
+            )
+
+            $("#delBtn").on(
+                "click",
+                function(){
+                    $("#box").remove();
+                    // $("#myList li:first").remove(); 
+                    $("#myList li:last").remove(); 
+
+                }
+            )
+
+        }
+        window.onload = init;
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    <button id="addBtn">add</button>
+    <button id="delBtn">delete</button>
+    <ul id="myList">
+        <li>temp</li>  
+    </ul>
+    <div id ="box">text</div>
+</body>
+</html>

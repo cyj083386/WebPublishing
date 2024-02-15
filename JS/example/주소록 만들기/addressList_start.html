@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> new document </title>
+  <link href="css/common.css" type="text/css" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+  <script type="text/javascript">
+	 	const init = function(){
+			$("#addressList").data("rowCount", 0);
+
+			$("#addBtn").on(
+				"click",
+				function(e){
+					//이중클릭방지
+					e.preventDefault();
+					const rowCount = $("#addressList").data("rowCount");
+					if(rowCount == 0){
+						$("#addressList tbody tr").remove();
+					}
+					//add시 카운팅 증가시킴. 리스트 length를 받아오는것보다 훨씬 효율적이다.
+					$("#addressList").data("rowCount", rowCount+1);
+
+					const tr = document.createElement("tr");
+					//갖다쓸게 아니면 append
+					$(tr).append("<td>최영주</td>");
+					$(tr).append("<td>010-6733-3333</td>");
+					//리턴받아서 이벤트 삽입등이 필요한경우, appendTo 사용
+					const td = $("<td></td>").appendTo(tr);
+					const aTagText = "<a href=\"#\"><img src=\"images/btn_del.gif\" alt=\"삭제\" /></a>";
+					//appendTo 사용, 리턴
+					const aTag = $(aTagText).appendTo(td);
+					//리턴값에 이벤트 부여
+					$(aTag).on(
+						"click",
+						function(){
+							$(this).parent().parent().remove();
+							const rowCount = $("#addressList").data("rowCount");
+							const nextRowCount = rowCount -1;
+							$("#addressList").data("rowCount", nextRowCount);
+							if(nextRowCount == 0){
+								$("#addressList tbody").append("<td colspan=\"3\">등록 된 내용이 없습니다.</td>")
+							}
+							console.log(rowCount);
+						}
+					);
+					// $(tr).append("<td><a href=\"#\"><img src=\"images/btn_del.gif\" alt=\"삭제\" /></a></td>");
+					$("#addressList tbody").append(tr);
+				}
+			)		
+        }
+        window.onload = init;
+  </script>
+ </head>
+ <body>
+<form name="frm" method="post">	
+	<label for="mem_name">이름</label>
+	<input type="text" id="userName" size="15" name="userName" maxlength="10"/>
+	<label for="mem_phone">핸드폰번호</label>
+	<input type="text" id="userPhone" size="20" maxlength="11" name="userPhone"/>
+	<a href="#" id="addBtn"><img src="images/btn_add.gif" alt="추가"/></a>		
+</form>
+<table id="addressList">
+	<caption>전화번호부</caption>
+	<colgroup>
+		<col width="40%" />
+		<col width="40%" />
+		<col width="20%" />
+	</colgroup>
+	<thead>
+		<tr>
+			<th scope="col">이름</th>
+			<th scope="col">전화번호</th>
+			<th scope="col">삭제</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td colspan="3">등록 된 내용이 없습니다.</td>
+		</tr>
+		<!--
+		<tr>
+			<td>양영보</td>
+			<td>010-1111-2222</td>
+			<td>
+				<a href="#"><img src="images/btn_del.gif" alt="삭제" /></a>
+			</td>
+		</tr>
+		-->
+	</tbody>
+</table>
+ </body>
+</html>
