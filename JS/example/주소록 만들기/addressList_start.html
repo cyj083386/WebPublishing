@@ -14,6 +14,26 @@
 				function(e){
 					//이중클릭방지
 					e.preventDefault();
+					/* Form 검증 */
+					const userName = $.trim($("#userName").val()); // 좌우 공백 제거
+					const userPhone = $.trim($("#userPhone").val());
+					if(userName == "") {
+						alert("이름을 입력해 주세요.");
+						$("#userName").focus();
+						return false; // 에러시 함수가 더이상 진행되지 않도록 처리
+					}
+					if(userPhone == "") {
+						alert("휴대폰 번호를 입력해 주세요.");
+						$("#userPhone").focus();
+						return false; // 에러시 함수가 더이상 진행되지 않도록 처리
+					}
+					if(userPhone.length < 11) {
+						alert("휴대폰 번호는 11자리를 입력해 주셔야 합니다.");
+						$("#userPhone").focus();
+						return false; // 에러시 함수가 더이상 진행되지 않도록 처리
+					}
+
+					/* Form 검증 */
 					const rowCount = $("#addressList").data("rowCount");
 					if(rowCount == 0){
 						$("#addressList tbody tr").remove();
@@ -23,8 +43,11 @@
 
 					const tr = document.createElement("tr");
 					//갖다쓸게 아니면 append
-					$(tr).append("<td>최영주</td>");
-					$(tr).append("<td>010-6733-3333</td>");
+					$(tr).append("<td>"+userName+"</td>");
+					let userPhoneStr = userPhone.substring(0,3); // 맨앞 숫자는 포함, 뒤 숫자는 미포함
+					userPhoneStr = userPhoneStr + "-" + userPhone.substring(3,7);
+					userPhoneStr = userPhoneStr + "-" + userPhone.substring(7); //뒤를 지정하지 않으면 끝까지 자름
+					$(tr).append("<td>"+userPhoneStr+"</td>");
 					//리턴받아서 이벤트 삽입등이 필요한경우, appendTo 사용
 					const td = $("<td></td>").appendTo(tr);
 					const aTagText = "<a href=\"#\"><img src=\"images/btn_del.gif\" alt=\"삭제\" /></a>";
@@ -36,7 +59,7 @@
 						function(){
 							$(this).parent().parent().remove();
 							const rowCount = $("#addressList").data("rowCount");
-							const nextRowCount = rowCount -1;
+							const nextRowCount = rowCount - 1;
 							$("#addressList").data("rowCount", nextRowCount);
 							if(nextRowCount == 0){
 								$("#addressList tbody").append("<td colspan=\"3\">등록 된 내용이 없습니다.</td>")
@@ -46,20 +69,32 @@
 					);
 					// $(tr).append("<td><a href=\"#\"><img src=\"images/btn_del.gif\" alt=\"삭제\" /></a></td>");
 					$("#addressList tbody").append(tr);
+					$("#userName,#userPhone").val("");
 				}
-			)		
+			);
+
+			$("#userPhone").on(
+				"keyup",
+				function(e){
+					//0-9이외를 찾음, g: 전체적용, i:대소문자 미구분
+					this.value = this.value.replace(/[^0-9]/gi,'');
+					if(e.key.toLowerCase() == "enter"){
+						$("#addBtn").trigger("click");
+					}
+				}
+			);		
         }
         window.onload = init;
   </script>
  </head>
  <body>
-<form name="frm" method="post">	
-	<label for="mem_name">이름</label>
-	<input type="text" id="userName" size="15" name="userName" maxlength="10"/>
-	<label for="mem_phone">핸드폰번호</label>
-	<input type="text" id="userPhone" size="20" maxlength="11" name="userPhone"/>
-	<a href="#" id="addBtn"><img src="images/btn_add.gif" alt="추가"/></a>		
-</form>
+	<form name="frm" method="post">
+		<label for="mem_name">이름</label>
+		<input type="text" id="userName" size="15" name="userName" maxlength="10"/>
+		<label for="mem_phone">핸드폰번호</label>
+		<input type="text" id="userPhone" size="20" maxlength="11" name="userPhone"/>
+		<a href="#" id="addBtn"><img src="images/btn_add.gif" alt="추가"/></a>
+	</form>
 <table id="addressList">
 	<caption>전화번호부</caption>
 	<colgroup>
