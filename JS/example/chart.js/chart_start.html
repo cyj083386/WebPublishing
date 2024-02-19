@@ -10,7 +10,77 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript">
-      
+      const makeChart = (stock, datas) => {
+        const labels = []; // x축
+        const labelDatas = []; // y축
+
+        $(datas).each(
+          function(index, element){
+            labels.unshift(element.date); //배열 맨 앞에 요소를 추가(push와 반대)
+            labelDatas.unshift(element.close);
+          }
+        );
+        // 기존에 그려놓은 차트객체가 있다면canvas 태그 삭제
+        $("#chartContainer canvas").remove();
+        $("#chartContainer").append("<canvas id=\"myChart\"></canvas>");
+
+        const ctx = document.getElementById('myChart');
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: stock,
+              data: labelDatas,
+              borderColor: "#ff0000",
+              backgroundColor: "#ff0000",
+            }]
+          },
+          options: {
+            //canvas 태그를 감싼 div(chartContainer) 크기에 그래프가 맞춰지는 옵션
+            maintainAspectRatio:false,
+            scales: {
+              y: {
+                beginAtZero: false
+              }
+            }
+          }
+        });
+      }
+
+
+      const init = () => {
+        $("#stockSelect").on(
+          "change",
+          function(){
+            const stock = this.value;
+            if(stock == ""){
+              alert("회사를 선택하셔야 정보를 보실수 있습니다.");
+              //리턴하지 않고 쭉 내려가도 되지만 끊어주는 스타일이 좋다
+              return false;
+            }
+
+            const apiUrl = "http://diddudqh.dothome.co.kr/stock/search.php"
+              $.ajax(
+                {
+                  type: "GET",
+                  url: apiUrl,
+                  data:{
+                    stock: stock
+                  },
+                  dataType: "json",
+                  success:function(data){
+                      makeChart(stock, data.datas);
+                  },
+                  error:function(jqXHR, textStatus, errorThrown){
+                      alert(textStatus+","+errorThrown);
+                  }
+                }
+              );
+          }
+        );
+      }
+      window.onload = init;
     </script>
 </head>
 <body>
@@ -31,7 +101,7 @@
             </div>
           </div>
           <div class="table-responsive" id="chartContainer" style="height: 400px;">
-              <!--<canvas id="myChart"></canvas>-->
+              <!-- <canvas id="myChart"></canvas> -->
           </div>
     </main>
 </body>
