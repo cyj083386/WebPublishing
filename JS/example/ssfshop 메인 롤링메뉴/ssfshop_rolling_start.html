@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title> new document </title>
+  <link href="css/style.css" type="text/css" rel="stylesheet"  media="screen" />
+  <script type="text/javascript">
+		const init= function(){
+			const pagingList = document.getElementById("pagingList");
+			const aTagList = pagingList.getElementsByTagName("a");
+			const pagingLiTagList = pagingList.getElementsByTagName("li");
+
+			const imgList = document.getElementById("imgList");
+			const imgLiTagList = imgList.getElementsByTagName("li");
+
+			for (let index = 0; index < aTagList.length; index++) {
+				aTagList[index].onmouseover=function(){
+					console.log('sId : ',sId);
+
+					clearInterval(sId);
+					//html class -> dom className
+					const myNum = this.getAttribute("num");
+					changeMenu(myNum);
+				};
+				aTagList[index].onmouseout=function(){
+					sId = setInterval(myTimer,3000);	
+				}
+				
+			}
+			//해당 메뉴를 보여주고 보여주지 않는 역할의 함수
+			const changeMenu = function(myNum){
+				for (let i = 0; i < aTagList.length; i++) {
+					// console.log(aTagList[i].getAttribute("num"), this.getAttribute("num"));
+					if(aTagList[i].getAttribute("num")==myNum){
+						pagingLiTagList[i].className="active";
+						imgLiTagList[i].className="lslide active";
+						console.log('i:'+i);
+					}else{
+						pagingLiTagList[i].className="";
+						imgLiTagList[i].className="lslide";
+					}
+				}
+			}
+
+			const myTimer = function(){
+				const aTag = pagingList.getElementsByClassName("active")[0].childNodes[0];
+				const currentNum = parseInt(aTag.getAttribute("num")); //1,2,3,4,5
+				let nextNum = currentNum + 1;
+				if (nextNum >= aTagList.length + 1) {
+					nextNum = 1;
+				}
+				changeMenu(nextNum);
+
+			}	
+			let sId = setInterval(myTimer,3000);		
+
+
+			document.getElementById("btnNext").onclick = function(){
+				const aTag = pagingList.getElementsByClassName("active")[0].childNodes[0];
+				const num = parseInt(aTag.getAttribute("num")); //1,2,3,4,5
+				currentNum= num-1;
+				if(currentNum >= aTagList.length){
+					num = 0;
+				}
+				aTagList[currentNum+1].onmouseover();
+
+		}
+
+		document.getElementById("btnPrev").onclick = function(){
+				const aTag = pagingList.getElementsByClassName("active")[0].childNodes[0];
+				const currentNum = parseInt(aTag.getAttribute("num")); //1,2,3,4,5
+				let num = currentNum - 2;
+
+				if(num < 0){
+					num = aTagList.length - 2;
+				}
+
+				aTagList[num].onmouseover();
+		}
+
+
+		}
+	
+	  window.onload = init;
+  </script>
+ </head>
+ <body>
+
+ <div class="mainSlider">
+	<!-- 슬라이더 이미지 -->
+	<div class="lSSlideOuter ">
+		<div class="lSSlideWrapper usingCss">
+			<ul class="mainImg lightSlider lSFade" id="imgList">
+				<li class="lslide">
+					<a href="#" class="imgWrap">	
+						<img src="images/1.jpg" alt="LYA LOVE CAMPAIGN">
+					</a>
+				</li>	
+				<li class="lslide active">
+					<a href="#" class="imgWrap">	
+						<img src="images/2.jpg" alt="루키콜라보">
+					</a>
+				</li>
+				<li class="lslide">
+					<a href="#" class="imgWrap">	
+						<img src="images/3.jpg" alt="(쿠폰X) 8S X KAKAO">
+					</a>
+				</li>
+				<li class="lslide">
+					<a href="#" class="imgWrap">	
+						<img src="images/4.jpg" alt="SUMMER NEW ITEM">
+					</a>
+				</li>
+				<li class="lslide">
+					<a href="#" class="imgWrap">	
+						<img src="images/5.jpg" alt="D">
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="lSAction">
+			<a class="lSPrev" id="btnPrev"></a>
+			<a class="lSNext" id="btnNext"></a>
+		</div>
+		<div class="lSPager lSpg">
+			<ul id="pagingList">
+				<li class="active"><a href="#" num="1">1</a></li>
+				<li class=""><a href="#" num="2">2</a></li>
+				<li class=""><a href="#" num="3">3</a></li>
+				<li class=""><a href="#" num="4">4</a></li>
+				<li class=""><a href="#" num="5">5</a></li>
+			</ul>
+		</div>
+	</div>	
+ </div>	
+
+ </body>
+</html>
